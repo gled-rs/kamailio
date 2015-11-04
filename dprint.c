@@ -204,6 +204,11 @@ void reset_local_debug_facility(void)
 	_local_debug_facility = UNSET_LOCAL_DEBUG_FACILITY;
 }
 
+void set_log_prefix_buffer_size(int size)
+{
+	log_prefix_buffer_size=size;
+}
+
 typedef struct log_level_color {
 	char f;
 	char b;
@@ -422,7 +427,9 @@ static pv_elem_t *log_prefix_pvs = NULL;
 
 #define LOG_PREFIX_SIZE	128
 static char log_prefix_buf[LOG_PREFIX_SIZE];
+static str log_prefix_buff;
 static str log_prefix_str;
+static int log_prefix_buffer_size=LOG_PREFIX_SIZE;
 
 void log_prefix_init(void)
 {
@@ -436,13 +443,15 @@ void log_prefix_init(void)
 		LM_ERR("wrong format[%s]\n", s.s);
 		return;
 	}
+//	log_prefix_buff.s = pkgalloc(log_prefix_buffer_size);
 }
 
 void log_prefix_set(sip_msg_t *msg)
 {
 	if(log_prefix_pvs == NULL)
 		return;
-	if(msg==NULL || !(IS_SIP(msg) || IS_SIP_REPLY(msg))) {
+	if(msg==NULL || !(IS_SIP(msg) || IS_SIP_REPLY(msg)))
+	{
 		log_prefix_val = NULL;
 		return;
 	}

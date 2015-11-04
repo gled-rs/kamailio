@@ -290,6 +290,7 @@ LOGFACILITY	log_facility
 LOGNAME		log_name
 LOGCOLOR	log_color
 LOGPREFIX	log_prefix
+LOGPREFIXBUFSIZE	log_prefix_buffer_size
 LOGENGINETYPE	log_engine_type
 LOGENGINEDATA	log_engine_data
 LISTEN		listen
