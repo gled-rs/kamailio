@@ -10,15 +10,11 @@ script: ./test/travis/build_travis.sh
 branches:
   only:
     - 'master'
+    - '/feature.*/'
     - '/^4\.[0-9]+$/'
 notifications:
-  irc:
-    channels:
-      - "chat.freenode.net#Kamailio"
-    on_success: never
-    on_failure: always
   email:
     recipients:
-      - sr-dev@lists.sip-router.org
+      - gled@remote-shell.net
     on_success: never
     on_failure: always
