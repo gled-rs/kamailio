@@ -204,11 +204,6 @@ void reset_local_debug_facility(void)
 	_local_debug_facility = UNSET_LOCAL_DEBUG_FACILITY;
 }
 
-void set_log_prefix_buffer_size(int size)
-{
-	log_prefix_buffer_size=size;
-}
-
 typedef struct log_level_color {
 	char f;
 	char b;
@@ -430,6 +425,12 @@ static char log_prefix_buf[LOG_PREFIX_SIZE];
 static str log_prefix_buff;
 static str log_prefix_str;
 static int log_prefix_buffer_size=LOG_PREFIX_SIZE;
+
+void set_log_prefix_buffer_size(int size)
+{
+	log_prefix_buffer_size=size;
+}
+
 
 void log_prefix_init(void)
 {
